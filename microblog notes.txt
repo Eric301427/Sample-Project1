@@ -1,0 +1,128 @@
+ Flask-WTF - To handle the web forms in this application
+ pip install flask-wtf
+
+ Need to practice:
+ Flask-SQLAlchemy documentation
+
+
+ if you cant run the flask app use this:
+ export FLASK_APP=/path/to/microblog.py
+
+ pag may bagong table ng gawa dapat iupdate ang migration at database:
+ flask db migrate -m "posts table"
+ flask db upgrade
+
+
+ sqlalchemy playtime(database):
+ -from app import db
+ -from app.models import User, Post
+
+ creating a new user:
+ -u = User(username='john', email='john@example.com')
+ db.session.add(u)
+ db.session.commit()
+
+ returns all the users:
+ -users = User.query.all()
+ -users
+
+view all users:
+-for u in users:
+...     print(u.id, u.username)
+...
+
+get user by id:
+-u = User.query.get(1)
+
+# get all users in reverse alphabetical order:
+-User.query.order_by(User.username.desc()).all()
+
+Delete all users testing:
+-users = User.query.all()
+-for u in users:
+-...     db.session.delete(u)
+-...
+
+
+flask shell command is another very useful tool in the flask umbrella of commands:
+-flask shell
+
+CHAPTER: chapter 5: UserLogin
+
+
+before creating template like registration: what you need to know:?
+1.create form.py- field validation
+2.register.html - template
+3.routes.py - add method for routing path
+
+python sub template:
+1.create another .html file.
+2. _anotherfile.html
+3. {% include '_anotherfile.html' %} -all file with underscore is a subTemplate.
+
+
+Database Migration:
+1. flask db migrate -m "new fields in user model"
+2. apply changes
+    2.1 flask db upgrade.
+
+
+To enable debug mode: this also reflect code changes upon save of a file.
+-set FLASK_DEBUG=1 = for windows
+-export FLASK_DEBUG = ubuntu
+
+LAST EDITED
+Integrating Followers with the Application
+
+Flask mail:
+send email every changes in password using forgot password
+
+
+email: flasknoreply001@gmail.com
+pass: flasknoreply12345
+
+DELETE:
+from app import db
+from app.models import User, Post
+db.session.query(User).delete()
+db.session.commit()
+
+Installing bootstrap: design in python
+-pip install flask-bootstrap
+
+Installing Flask-Babel - for language translation:
+-pop install flask-babel
+
+Always install extension to inside the environtment()
+-venv\Scripts\activate
+
+
+chapter 16-
+pip install flask_babel   
+pip install python-dotenv 
+pip install guess_language
+pip install guess_language-spirit
+pip install requests
+
+flask db init
+This will list down and update all depencies 
+pip freeze > requirements.txt
+
+start elastic search:
+elasticsearch-service.bat start
+.\bin\elasticsearch.bat
+
+install all dependencies:
+pip install -r requirements.txt
+
+
+flask-httpauth -authentication requests
+
+API authentication:
+pip install flask-httpauth
+
+to generate authorization:
+http --auth eric:123123 POST http://localhost:5000/api/tokens
+
+to send bearer token or to get api with authorization:
+http GET http://localhost:5000/api/users/1 "Authorization:Bearer pC1Nu9wwyNt8VCj1trWilFdFI276AcbS"

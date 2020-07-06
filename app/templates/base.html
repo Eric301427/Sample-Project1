@@ -1,0 +1,135 @@
+{% block doc -%}
+    <!Doctype html>
+    <html lang ="en">
+        {%- block html%}
+            <head>
+                {%- block head %}
+                    <!-- Global site tag (gtag.js) - Google Analytics -->
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158815873-1"></script>
+                    <script>
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+
+                        gtag('config', 'UA-158815873-1');
+                    </script>
+
+                    
+                    
+                    <!-- favicon -->
+                    <link rel='icon' href="{{ url_for('static', filename='favicon.ico')}}" type='image/x-icon'/ >
+                    
+                    <!-- Title -->
+                    <title>{% block title %}{{ title|default }}{% endblock title %}</title>
+
+                    {%- block metas %}
+                        <!-- Required meta tags -->
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    {%- endblock metas %}
+
+                    {%- block styles %}
+                        <!-- Bootstrap CSS -->
+                        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                            rel="stylesheet"
+                            integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+                            crossorigin="anonymous">
+                        <link rel="stylesheet"
+                            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+                            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+                            crossorigin="anonymous">
+                        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+                        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+                        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+                        <!-- Dashboard Css -->
+                        <link href="{{ url_for('static', filename='css/dashboard.css')}}" rel="stylesheet">
+                        <link href="{{ url_for('static', filename='bootstrap-4.5.0-dist\js\bootstrap.bundle.min.js')}}"></link>
+                        <link href="{{ url_for('static', filename='css/custom.css')}}" rel="stylesheet">
+                        
+                       
+                        
+                    {%- endblock styles %}
+                {%- endblock head %}
+            </head>
+            <body {% block body_attribs %}{% endblock body_attribs %}>
+                {% block body -%}
+                    {% block navbar %}
+                    <nav class="bg-primary fixed-top">
+                      <div class="navbar-toggler" id="menu-toggle" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <div id="line1"></div>
+                        <div id="line1"></div>
+                        <div id="line1"></div>
+                      </div>
+                    </nav>
+                    <div class="d-flex" id="wrapper">
+                      
+                      <!-- Sidebar -->
+                        <div class="bg-light border-right" id="sidebar-wrapper">
+                          <div class="sidebar-heading">Start Bootstrap </div>
+                          <div class="list-group list-group-flush">
+                            <a href="/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+                            <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+                            <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
+                            <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+                            <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+                            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+                          </div>
+                        </div>
+                        <!-- /#sidebar-wrapper -->
+                  
+                      <!-- Page Content -->
+                      <div id="page-content-wrapper">
+                        <div class="container-fluid">
+                          <!-- Collapse button -->
+                          <br>
+                          <br>
+                          {% block content -%}
+                          {%- endblock content %}
+                        </div>
+                      </div>
+                      <!-- /#page-content-wrapper -->
+                  
+                    </div>
+                    <!-- /#wrapper -->
+                
+                    <!-- Menu Toggle Script -->
+                    <script>
+                        $(function() {
+                            $("#menu-toggle").click(function(e) {
+                              
+                                e.preventDefault();
+                                $("#wrapper").toggleClass("toggled");
+                            });
+                        });
+                        
+                    </script>
+                   
+                    <br />
+
+                     
+                    {%- endblock navbar %}
+                    
+                    
+                    
+                    {% block scripts %}
+                        <!-- Optional JavaScript -->
+                        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+                        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                                crossorigin="anonymous"></script>
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+                                integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+                                crossorigin="anonymous"></script>
+
+                                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                
+
+                    {%- endblock scripts %}
+                {% endblock body -%}
+            </body>
+        {%- endblock html %}
+    </html>
+{% endblock -%}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} Search Movies {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-lg-12 my-auto text-center">
+                <form method="post" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    
+                    <div class="form-group">
+                        Select Movies {{ form.option(class='form-control') }}
+                       
+                    </div>
+                    <img src="../static/img/loading1.gif" id="img" height="70px" width="70px" class="center" style="display: none;" />
+                    <br>
+                    <button type="submit" id="sub" class="btn btn-primary center">Submit</button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="row text-center mt-4">
+            <div class="col-lg-12">
+                <!-- <i class="fa fa-github"> </i> Complete Code on Github
+                <p id="comment" class="text-secondary" style=" display:none">
+                    
+                </p> -->
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    $('#sub').click(function () {
+        $('#img').show();
+        $('#comment').css('display', 'block');
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} Home Page {% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <Style>
+        html, body {
+            height: 100%;
+            /* background: #f5f5f5; */
+        }
+
+        .container {
+            height: 80%;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        p {
+            font-family: 'Roboto', sans-serif;
+        }
+    </Style>
+{% endblock %}
+
+{% block content %}
+    
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <div class="card" style="text-align: center">
+                        <div class="thumbnail" >
+                            <a href="/viewSampleApps" style="width:60%">
+                                <img src="../static/img/heatmap and trendline.PNG" width="200" height="100" alt="...">
+                            </a>
+                        </div>
+                        <div class="card-header">
+                            <p>Sample Heatmap and TrendLine</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <div class="card" style="text-align: center" >
+                        <a href="/barChart" style="width:60%">
+                            <div class="thumbnail">
+                                    <img src="../static/img/Bar-graph_tn.PNG" width="170" height="100" alt="...">
+                        </a>
+                            </div>
+                            <div class="card-header">
+                                <p> Bar Graph with json request</p>
+                            </div>    
+                    </div>
+                </div>
+                <!-- Custom Chart -->
+                <div class="col-xs-6 col-md-3">
+                    <div class="card" style="text-align: center" >
+                        <a href="/customChart" style="width:60%">
+                            <div class="thumbnail">
+                                    <img src="../static/img/customizeIcon.png" width="200" height="120" alt="...">
+                        </a>
+                            </div>
+                            <div class="card-header">
+                                <p> Customize Graph</p>
+                            </div>    
+                    </div>
+                </div>
+            </div> 
+        <div class="container-fluid">
+            
+        </div>
+    
+           
+           
+        <div class="row text-center mt-4">
+            <div class="col-lg-12">
+                <!-- <i class="fa fa-github"> </i> Complete Code on Github
+                <p id="comment" class="text-secondary" style=" display:none">
+                    This webapp is hosted on a student budget. It might take more than a few seconds. Please hold your horses.
+                </p> -->
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+   
+     
+{% endblock %}

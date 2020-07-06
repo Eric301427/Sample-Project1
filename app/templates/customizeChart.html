@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<div>
+    <br>
+    <br>
+    <a href="#">Data</a>
+    <a href="#">Chart</a>
+
+    <!-- Show chart -->
+    <form action="{{ url_for('generateGraph') }}" method="post" enctype="multipart/form-data">
+       
+        <div class="form-group">
+            <label for="lblChartName">Name</label>
+            <input type="text" name="chartName" class="form-control" id="chartName" placeholder="Name of the chart">
+        </div>
+        <div class="form-group">
+            <label for="lblChartName">Type</label>
+            <select id='chartType' class="form-control">
+                <option value="">Select type of chart</option>
+                <option value="bar-graph-horizontal">Bar-Graph(Horizontal)</option>
+                <option value="bar-graph-vertical">Bar-Graph(Vertical)</option>
+                <option value="line-chart">Line Chart</option>
+            </select>
+
+        </div>
+
+        <div class="form-group">
+            <label for="lblChartName">X-axis</label>
+            <select id='xAxis' class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+            <label for="lblChartName">Y-axis</label>
+            <select id='yAxis' class="form-control"></select>
+        </div>
+
+        <button type="submit" id="sub" class="btn btn-primary center">Submit</button>
+    </form>
+
+    <form>
+        
+    </form>
+    <!-- Show Data -->
+    
+
+</div>
+
+{% endblock %}
+{% block scripts %}
+    <script>
+          
+        var data = JSON.parse('{{ microblogData | tojson | safe}}');
+        console.log("PropertyName" + (data[0]));
+       
+        
+
+        var yAxis = $('#yAxis');
+        var xAxis = $('#xAxis');
+
+        $.each(Object.getOwnPropertyNames(data[0]), function(val, text) {
+            console.log("HII" + val + " " + typeof(text['username']));
+            yAxis.append(
+                $('<option><span style="text-align:right;">' + jQuery.type(text['username']) + '</span></option>').val(text).html(text)
+                
+            );
+
+            xAxis.append(
+                $('<option><span style="text-align:right;">' + jQuery.type(text['username']) + '</span></option>').val(text).html(text)
+            )
+        });
+
+    </script>
+    
+
+{% endblock %}
